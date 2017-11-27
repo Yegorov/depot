@@ -70,4 +70,12 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal [I18n.translate('errors.messages.taken')],
                  product.errors[:title]
   end
+
+  test "product title must correct length" do
+    product = products(:ruby)
+    product.title = "a" * 41
+    assert product.invalid?
+    product.title = "a" * 40
+    assert product.valid?
+  end
 end
