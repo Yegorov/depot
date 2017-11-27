@@ -20,9 +20,3 @@ ruby:
     delivered fast, you should add Ruby to your toolbox.
   price: 49.50
   image_url: ruby.png
-
-invalid_book:
-  title: asd
-  description: asd
-  image_url: asd.png
-  price: -1
