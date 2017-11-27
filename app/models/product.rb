@@ -7,4 +7,17 @@ class Product < ApplicationRecord
     message: 'must be a URL for GIF, JPG or PNG image.'
   }
   validates :title, length: 1..40
+
+  has_many :line_items
+  # Нельзя удалить продукт, если он находится у кого-то в корзине
+  before_destroy :ensure_not_referenced_by_any_line_item
+
+
+  private
+  def ensure_not_referenced_by_any_line_item
+    unless line_items.empty?
+      errors.add(:base, 'Line Items present')
+      throw :abort
+    end
+  end
 end
