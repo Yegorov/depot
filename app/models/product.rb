@@ -12,6 +12,8 @@ class Product < ApplicationRecord
   # Нельзя удалить продукт, если он находится у кого-то в корзине
   before_destroy :ensure_not_referenced_by_any_line_item
 
+  has_many :orders, through: :line_items
+
 
   private
   def ensure_not_referenced_by_any_line_item
