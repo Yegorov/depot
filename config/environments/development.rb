@@ -53,4 +53,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_cable.disable_request_forgery_protection = true
+
+  config.action_mailer.delivery_method = :test
 end
